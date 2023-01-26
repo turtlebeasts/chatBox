@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import GoogleButton from 'react-google-button';
+import GithubButton from 'react-github-login-button';
 import { CardActions } from '@mui/material';
 
 export default function MediaCard() {
@@ -21,6 +22,9 @@ export default function MediaCard() {
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
         <GoogleButton />
+      </CardActions>
+      <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
+        <GithubButton type='dark'/>
       </CardActions>
     </Card>
   );
