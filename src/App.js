@@ -12,7 +12,7 @@ function App() {
     <div>
       {
         user?
-        <ResponsiveDrawer />
+        <ResponsiveDrawer user={user}/>
         :<SignIn />
       }
     </div>

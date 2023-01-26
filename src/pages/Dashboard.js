@@ -21,14 +21,18 @@ import Conversation from './Dashboard_components/Conversation';
 import { CardMedia } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase_config';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase_config';
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
+  const { user } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [compIndex, setIndex] = React.useState(0)
-  const components = [<UsersPage/>, <Conversation/>]
+  const [userList, setList] = React.useState([])
+  const components = [<UsersPage userList = {userList} />, <Conversation/>]
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -37,6 +41,16 @@ function ResponsiveDrawer(props) {
     setIndex(index)
     setMobileOpen(false)
   }
+
+  React.useEffect(()=>{
+    const collectionRef = collection(db, "users")
+
+    const getUsers = async () =>{
+      const data = await getDocs(collectionRef)
+      setList(data.docs)
+    }
+    getUsers()
+  },[db])
   const drawer = (
     <div>
       <Toolbar />
@@ -92,12 +106,13 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <CardMedia 
-          sx={{height: 50, width: 50, borderRadius: 50, marginRight: 2}}
-          image="images/Banner.png"
-          alt="Banner"
+          sx={{height: 50, width: 50, borderRadius: 50, marginRight: 2, referrerPolicy: 'no-refer'}}
+          image={user.photoURL}
+          alt={user.displayName}
+          referrerPolicy="no-referrer" 
           />
           <Typography variant="h6" noWrap component="div">
-            Nameof User
+            {user.displayName}
           </Typography>
         </Toolbar>
       </AppBar>
