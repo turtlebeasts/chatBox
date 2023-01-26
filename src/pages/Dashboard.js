@@ -19,6 +19,8 @@ import Typography from '@mui/material/Typography';
 import UsersPage from './Dashboard_components/UsersPage';
 import Conversation from './Dashboard_components/Conversation';
 import { CardMedia } from '@mui/material';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase_config';
 
 const drawerWidth = 240;
 
@@ -55,7 +57,7 @@ function ResponsiveDrawer(props) {
       <List>
         {['Logout'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={()=>signOut(auth)}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
