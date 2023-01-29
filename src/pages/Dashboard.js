@@ -50,7 +50,7 @@ function ResponsiveDrawer(props) {
       setList(data.docs)
     }
     getUsers()
-  },[db])
+  },[])
   const drawer = (
     <div>
       <Toolbar />
