@@ -86,7 +86,7 @@ export default function Message(props) {
                 }
             </Box>
             <Box style={{ display: "flex", justifyContent: "center" }}>
-                <TextField variant="standard" placeholder='Message...' style={{ width: 320 }} value={text} onChange={(e) => setText(e.target.value)} autoComplete="off" />
+                <TextField variant="standard" placeholder='Message...' style={{ width: 250 }} value={text} onChange={(e) => setText(e.target.value)} autoComplete="off" />
                 <IconButton onClick={handleSend} disabled={text.length === 0}>
                     {
                         loading

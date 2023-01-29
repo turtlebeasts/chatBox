@@ -29,9 +29,8 @@ export default function Modals(props) {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         boxShadow: 24,
-        minWidth: 400,
-        pl: 4,
-        pr: 5
+        pl: 2,
+        pr: 2
     };
     return (
         <Card component={Grid}>

@@ -20,8 +20,8 @@ export default function Cards(props) {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     boxShadow: 24,
-    p: 4,
-    minWidth: 400
+    p: 2,
+    minWidth: 300
   };
 
   return (
